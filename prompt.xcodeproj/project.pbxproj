@@ -22,7 +22,7 @@
 		AF7F6E0E235EADDC00950AF6 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F6E0D235EADDB00950AF6 /* ItemViewController.swift */; };
 		AF7F6E10235F492300950AF6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F6E0F235F492200950AF6 /* ItemTableViewCell.swift */; };
 		AF7F6E14235FAED100950AF6 /* ManyItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F6E13235FAED100950AF6 /* ManyItemTableViewCell.swift */; };
-		AF7F6E1823608AD400950AF6 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F6E1723608AD400950AF6 /* CustomTableView.swift */; };
+		AF7F6E1823608AD400950AF6 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F6E1723608AD400950AF6 /* MenuTableView.swift */; };
 		AF7F6E1E2360E03400950AF6 /* CustomTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7F6E1D2360E03400950AF6 /* CustomTableHeaderView.xib */; };
 		AFE569C22357683F0001EA76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE569C12357683F0001EA76 /* AppDelegate.swift */; };
 		AFE569C62357683F0001EA76 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE569C52357683F0001EA76 /* ScannerViewController.swift */; };
@@ -85,7 +85,7 @@
 		AF7F6E0D235EADDB00950AF6 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		AF7F6E0F235F492200950AF6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		AF7F6E13235FAED100950AF6 /* ManyItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManyItemTableViewCell.swift; sourceTree = "<group>"; };
-		AF7F6E1723608AD400950AF6 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		AF7F6E1723608AD400950AF6 /* MenuTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
 		AF7F6E1D2360E03400950AF6 /* CustomTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableHeaderView.xib; sourceTree = "<group>"; };
 		AFD443350328431EC11CCF32 /* Pods-prompt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prompt.release.xcconfig"; path = "Target Support Files/Pods-prompt/Pods-prompt.release.xcconfig"; sourceTree = "<group>"; };
 		AFE569BE2357683F0001EA76 /* prompt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prompt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,11 +155,10 @@
 		AF35800E23652D3F002D7C62 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AF7F6E0F235F492200950AF6 /* ItemTableViewCell.swift */,
-				AF7F6E1723608AD400950AF6 /* CustomTableView.swift */,
+				AF364C6B2367792900FE204D /* ItemTableViews */,
+				AF7F6E1723608AD400950AF6 /* MenuTableView.swift */,
 				AF5BFD1723593B8100B6897E /* TableViewCell.swift */,
 				AF7F6E1D2360E03400950AF6 /* CustomTableHeaderView.xib */,
-				AF7F6E13235FAED100950AF6 /* ManyItemTableViewCell.swift */,
 				AF358017236531E3002D7C62 /* HeaderView.swift */,
 			);
 			path = View;
@@ -191,6 +190,15 @@
 				AF5BFCFF2358DBC700B6897E /* MenuViewController.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		AF364C6B2367792900FE204D /* ItemTableViews */ = {
+			isa = PBXGroup;
+			children = (
+				AF7F6E0F235F492200950AF6 /* ItemTableViewCell.swift */,
+				AF7F6E13235FAED100950AF6 /* ManyItemTableViewCell.swift */,
+			);
+			path = ItemTableViews;
 			sourceTree = "<group>";
 		};
 		AFE569B52357683F0001EA76 = {
@@ -504,7 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF7F6E1823608AD400950AF6 /* CustomTableView.swift in Sources */,
+				AF7F6E1823608AD400950AF6 /* MenuTableView.swift in Sources */,
 				AF358014236531B3002D7C62 /* HeaderViewController.swift in Sources */,
 				AF364C6A2366100300FE204D /* TestViewController.swift in Sources */,
 				AF7F6E0E235EADDC00950AF6 /* ItemViewController.swift in Sources */,

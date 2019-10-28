@@ -23,7 +23,7 @@ class CustomTableViewCell: UITableViewCell {
     let label = UILabel()
     label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = UIColor(rgb:0x365E7A)
-    label.font = UIFont(name: "Avenir Next-Demi Bold", size: 20)
+    label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
     } ()
@@ -31,10 +31,11 @@ class CustomTableViewCell: UITableViewCell {
     let TitleDetailedLabel:UITextView = {
       let label = UITextView()
           label.textColor = UIColor(rgb:0x365E7A)
-      label.font = UIFont(name: "Avenir Next", size: 14)
+      label.font = UIFont(name: "AvenirNext", size: 14)
         label.textContainer.lineFragmentPadding = 0
         label.textContainerInset = .zero
         label.backgroundColor = .white
+        label.isEditable = false
 //      label.layer.cornerRadius = 5
 //      label.clipsToBounds = true
 //        label.backgroundColor = .red
@@ -44,7 +45,7 @@ class CustomTableViewCell: UITableViewCell {
     var price: UILabel = {
     let label = UILabel()
         label.textColor = UIColor(rgb:0x365E7A)
-    label.font = UIFont(name: "Avenir Next-Demi Bold", size: 15)
+    label.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
     } ()

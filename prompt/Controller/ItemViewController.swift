@@ -170,7 +170,10 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
        }
     
 
-
+    @IBAction func AddToCart(_ sender: Any) {
+self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 class ItemTableHeaderView: UIView {

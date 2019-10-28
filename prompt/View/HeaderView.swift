@@ -53,7 +53,7 @@ class HeaderView: UIView {
         NavRestaurantTitle.translatesAutoresizingMaskIntoConstraints = false
         NavRestaurantTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         NavRestaurantTitle.bottomAnchor.constraint(equalTo: NavView.bottomAnchor, constant: -10).isActive = true
-        NavRestaurantTitle.font = UIFont(name: "Avenir Next", size: 18)
+        NavRestaurantTitle.font = UIFont(name: "AvenirNext", size: 18)
         NavRestaurantTitle.textColor = .white
     }
     
@@ -81,7 +81,7 @@ class HeaderView: UIView {
         coverView.translatesAutoresizingMaskIntoConstraints = false
         titlerestaurant.translatesAutoresizingMaskIntoConstraints = false
         
-        titlerestaurant.font = UIFont(name: "Avenir Next-Demi Bold", size: 20)
+        titlerestaurant.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
         coverView.backgroundColor = .black
         coverView.alpha = 0.7
         

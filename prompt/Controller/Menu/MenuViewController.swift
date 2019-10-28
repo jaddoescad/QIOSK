@@ -175,8 +175,10 @@ extension MenuViewController: PagingViewControllerDataSource {
    
     let menuHeight = pagingViewController.options.menuHeight
     let insets = UIEdgeInsets(top: menuHeight, left: 0, bottom: 0, right: 0)
-    viewController.tableView.contentInset = insets
-    viewController.tableView.scrollIndicatorInsets = insets
+    
+//    print(viewController.menuView.tableView)
+    viewController.menuView.tableView.contentInset = insets
+    viewController.menuView.tableView.scrollIndicatorInsets = insets
     // Set automatic dimensions for row height
 
     return viewController
