@@ -15,6 +15,9 @@
 		AF364C6F23690C0900FE204D /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C6E23690C0800FE204D /* ItemModel.swift */; };
 		AF364C7123690D3300FE204D /* ItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C7023690D3300FE204D /* ItemHeader.swift */; };
 		AF364C7423690E7600FE204D /* ItemVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C7323690E7600FE204D /* ItemVCExtension.swift */; };
+		AF364C772369218200FE204D /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C762369218200FE204D /* MenuModel.swift */; };
+		AF364C792369461400FE204D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C782369461400FE204D /* MenuView.swift */; };
+		AF364C7B2369D65000FE204D /* SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C7A2369D65000FE204D /* SelectionModel.swift */; };
 		AF5BFD022358DBC700B6897E /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFCFD2358DBC700B6897E /* UIView+constraints.swift */; };
 		AF5BFD042358DBC700B6897E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFCFF2358DBC700B6897E /* MenuViewController.swift */; };
 		AF5BFD0A2358F07A00B6897E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFD092358F07A00B6897E /* MenuTableViewController.swift */; };
@@ -80,6 +83,9 @@
 		AF364C6E23690C0800FE204D /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		AF364C7023690D3300FE204D /* ItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeader.swift; sourceTree = "<group>"; };
 		AF364C7323690E7600FE204D /* ItemVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVCExtension.swift; sourceTree = "<group>"; };
+		AF364C762369218200FE204D /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		AF364C782369461400FE204D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		AF364C7A2369D65000FE204D /* SelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionModel.swift; sourceTree = "<group>"; };
 		AF5BFCFD2358DBC700B6897E /* UIView+constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
 		AF5BFCFF2358DBC700B6897E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		AF5BFD092358F07A00B6897E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				AF364C6E23690C0800FE204D /* ItemModel.swift */,
+				AF364C7A2369D65000FE204D /* SelectionModel.swift */,
+				AF364C762369218200FE204D /* MenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 				AF7F6E1723608AD400950AF6 /* MenuTableView.swift */,
 				AF7F6E1D2360E03400950AF6 /* CustomTableHeaderView.xib */,
 				AF358017236531E3002D7C62 /* HeaderView.swift */,
+				AF364C782369461400FE204D /* MenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,7 +183,7 @@
 			children = (
 				AF35801923655F31002D7C62 /* Menu */,
 				AFE569C52357683F0001EA76 /* ScannerViewController.swift */,
-				AF364C7223690E6100FE204D /* New Group */,
+				AF364C7223690E6100FE204D /* ItemControllerGroup */,
 				AF364C692366100300FE204D /* TestViewController.swift */,
 			);
 			path = Controller;
@@ -206,13 +215,13 @@
 			path = ItemTableViews;
 			sourceTree = "<group>";
 		};
-		AF364C7223690E6100FE204D /* New Group */ = {
+		AF364C7223690E6100FE204D /* ItemControllerGroup */ = {
 			isa = PBXGroup;
 			children = (
 				AF7F6E0D235EADDB00950AF6 /* ItemViewController.swift */,
 				AF364C7323690E7600FE204D /* ItemVCExtension.swift */,
 			);
-			path = "New Group";
+			path = ItemControllerGroup;
 			sourceTree = "<group>";
 		};
 		AFE569B52357683F0001EA76 = {
@@ -530,11 +539,14 @@
 				AF364C7123690D3300FE204D /* ItemHeader.swift in Sources */,
 				AF364C6A2366100300FE204D /* TestViewController.swift in Sources */,
 				AF364C7423690E7600FE204D /* ItemVCExtension.swift in Sources */,
+				AF364C7B2369D65000FE204D /* SelectionModel.swift in Sources */,
 				AF7F6E0E235EADDC00950AF6 /* ItemViewController.swift in Sources */,
+				AF364C792369461400FE204D /* MenuView.swift in Sources */,
 				AF5BFD1A235AEB0200B6897E /* helper.swift in Sources */,
 				AF5BFD022358DBC700B6897E /* UIView+constraints.swift in Sources */,
 				AF5BFD1823593B8100B6897E /* TableViewCell.swift in Sources */,
 				AF7F6E10235F492300950AF6 /* ItemTableViewCell.swift in Sources */,
+				AF364C772369218200FE204D /* MenuModel.swift in Sources */,
 				AF7F6E14235FAED100950AF6 /* ManyItemTableViewCell.swift in Sources */,
 				AF5BFD0A2358F07A00B6897E /* MenuTableViewController.swift in Sources */,
 				AF5BFD042358DBC700B6897E /* MenuViewController.swift in Sources */,

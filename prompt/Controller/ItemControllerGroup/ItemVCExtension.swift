@@ -59,6 +59,14 @@ extension ItemViewController {
             self.tableView.updateHeaderViewFrame()
         }
     }
+    @objc func ItemBackbuttonAction(sender: UIButton!) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func AddToCart(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }
 

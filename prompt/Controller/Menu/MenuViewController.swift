@@ -7,130 +7,8 @@ import Parchment
 // controller, but we want to include a header view above the menu. We
 // also create a layout constraint property that allows us to update
 // the height of the header.
-struct ImageItem: PagingItem, Hashable, Comparable {
-  let index: Int
-  let title: String
-  let headerImage: UIImage
-  let headers: [String]
-//  let description : String
-//  let price: [String]
-  let images: [UIImage]
-
-  var hashValue: Int {
-    return index.hashValue &+ title.hashValue
-  }
-
-  static func ==(lhs: ImageItem, rhs: ImageItem) -> Bool {
-    return lhs.index == rhs.index && lhs.title == rhs.title
-  }
-
-  static func <(lhs: ImageItem, rhs: ImageItem) -> Bool {
-    return lhs.index < rhs.index
-  }
-}
-
-class CustomPagingView: PagingView {
-
-    let NavView = UIView()
-    let BackButton = UIButton()
-    let NavRestaurantTitle = UILabel()
-  override func setupConstraints() {
-    
-    pageView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-    createNavBar()
-    NSLayoutConstraint.activate([
-      collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      collectionView.heightAnchor.constraint(equalToConstant: options.menuHeight),
-      collectionView.topAnchor.constraint(equalTo: NavView.bottomAnchor),
 
 
-      pageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      pageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      pageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      pageView.topAnchor.constraint(equalTo: NavView.bottomAnchor)
-    ])
-  }
-    func createNavBar() {
-         addSubview(NavView)
-         NavView.backgroundColor = UIColor(rgb: 0x365E7A)
-         NavView.translatesAutoresizingMaskIntoConstraints = false
-         NavView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-         NavView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-         NavView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive  = true
-         NavView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive  = true
-         NavView.heightAnchor.constraint(equalToConstant: 64).isActive = true
-     }
-}
-
-class NavView: UIView {
-    let newView = UIImageView()
-    let coverView = UIView()
-    let titlerestaurant = UILabel()
-    let NavView = UIView()
-    let BackButton = UIButton()
-    let NavRestaurantTitle = UILabel()
-    var Cartbutton = UIButton()
-
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        createSubviews()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        createSubviews()
-    }
-
-    func createSubviews() {
-        // all the layout code from above
-        createNavBar()
-    }
-    
-    func createNavBar() {
-            addSubview(NavView)
-            NavView.backgroundColor = UIColor(rgb: 0x365E7A)
-            NavView.translatesAutoresizingMaskIntoConstraints = false
-            NavView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-            NavView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            NavView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive  = true
-            NavView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive  = true
-//            NavView.heightAnchor.constraint(equalToConstant: 64).isActive = true
-            NavView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-
-            addBackButton()
-            addTitle()
-        }
-        func addTitle() {
-            NavView.addSubview(NavRestaurantTitle)
-            NavRestaurantTitle.translatesAutoresizingMaskIntoConstraints = false
-            NavRestaurantTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-            NavRestaurantTitle.bottomAnchor.constraint(equalTo: NavView.bottomAnchor, constant: -10).isActive = true
-            NavRestaurantTitle.font = UIFont(name: "AvenirNext-Medium", size: 17)
-            NavRestaurantTitle.textColor = .white
-        }
-        
-        func addBackButton() {
-             NavView.addSubview(BackButton)
-             BackButton.imageView?.contentMode = .scaleAspectFit
-             BackButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: -40, bottom: 10, right: 20)
-             BackButton.setImage(UIImage(named: "Back"), for: .normal)
-             BackButton.translatesAutoresizingMaskIntoConstraints = false
-             BackButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-             BackButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-             BackButton.bottomAnchor.constraint(equalTo: NavView.bottomAnchor, constant: 0).isActive = true
-             BackButton.leftAnchor.constraint(equalTo: NavView.leftAnchor).isActive  = true
-             BackButton.semanticContentAttribute = .forceLeftToRight
-
-        }
-    
-    @objc func GoBack() {
-        
-    }
-}
 
 // Create a custom paging view controller and override the view with
 // our own custom subclass.
@@ -150,67 +28,20 @@ class MenuViewController: UIViewController {
 var Cartbutton = UIButton()
 var price = UILabel()
 
+    private let dataSource = MenuModel()
 
   let Nav = NavView()
   let restaurantName = "Le Moulin La Fayette"
-  private let items = [
-  ImageItem(
-    index: 0,
-    title: "Cake",
-    headerImage: UIImage(named: "green-1")!,
-    headers: [
-    "Spicy Latte",
-    "Spicy Latte",
-    "Spicy Latte",
-    "Spicy Latte",
-    ],
 
-    images: [
-      UIImage(named: "green-1")!,
-      UIImage(named: "green-2")!,
-      UIImage(named: "green-3")!,
-      UIImage(named: "green-4")!,
-    ]
-    ),
-  ImageItem(
-    index: 0,
-    title: "Sweets",
-    headerImage: UIImage(named: "green-1")!,
-    headers: [
-    "Spicy Latte",
-    "Spicy Latte",
-    "Spicy Latte",
-    "Spicy Latte",
-    ],
-
-    images: [
-      UIImage(named: "green-1")!,
-      UIImage(named: "green-2")!,
-      UIImage(named: "green-3")!,
-      UIImage(named: "green-4")!,
-    ]),
-  ImageItem(
-    index: 0,
-    title: "Dessert",
-    headerImage: UIImage(named: "green-1")!,
-    headers: [
-    "Spicy Latte",
-    "Spicy Latte",
-    "Spicy Latte",
-    "Spicy Latte",
-    ],
-
-    images: [
-      UIImage(named: "green-1")!,
-      UIImage(named: "green-2")!,
-      UIImage(named: "green-3")!,
-      UIImage(named: "green-4")!,
-    ]),
-  ]
-    
+fileprivate var menuDataArray = [MenuItem]()
     
   override func viewDidLoad() {
     super.viewDidLoad()
+    dataSource.delegate = self
+    
+    dataSource.setDataWithResponse()
+    
+    
     Nav.BackButton.addTarget(self, action: #selector(GoBack), for: .touchUpInside)
 
     price.text = "$17.96"
@@ -296,9 +127,13 @@ var price = UILabel()
 extension MenuViewController: PagingViewControllerDataSource {
 
   func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, viewControllerForIndex index: Int) -> UIViewController {
+    
+    if let images = menuDataArray[index].images, let headers = menuDataArray[index].headers {
+    
+     
     let viewController = MenuTableViewController(
-      images: items[index].images,
-      titles: items[index].headers,
+      images: images,
+      titles: headers,
       restaurantTitle: restaurantName,
       options: pagingViewController.options
     )
@@ -312,14 +147,17 @@ extension MenuViewController: PagingViewControllerDataSource {
     // Set automatic dimensions for row height
 
     return viewController
+    } else {
+        return UIViewController()
+    }
   }
 
   func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, pagingItemForIndex index: Int) -> T {
-    return PagingIndexItem(index: index, title: "\(items[index].title)") as! T
+    return PagingIndexItem(index: index, title: "\(menuDataArray[index].title ?? "Item")") as! T
   }
 
   func numberOfViewControllers<T>(in: PagingViewController<T>) -> Int{
-    return items.count
+    return menuDataArray.count
   }
 
 }
@@ -337,3 +175,10 @@ extension MenuViewController: UITableViewDelegate {
 
 }
 
+
+
+extension MenuViewController: MenuModelDelegate {
+    func didReceiveMenu(data: [MenuItem]) {
+        menuDataArray = data
+    }
+}

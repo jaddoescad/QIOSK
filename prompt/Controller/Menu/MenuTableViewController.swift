@@ -4,7 +4,10 @@ import Parchment
 class MenuTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     fileprivate let images: [UIImage]
     fileprivate let titles: [String]
-    fileprivate let restaurantTitle: String
+//    fileprivate let prices: [Float]
+//    fileprivate let description: [String]
+    //    fileprivate let Selection: [Any]
+
     var menuView = MenuView()
 //    var MenuTableView = UITableView()
 //    var menuTable = UITableView()
@@ -13,7 +16,7 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
     init(images: [UIImage],titles: [String],restaurantTitle: String,  options: PagingOptions) {
       self.images = images
       self.titles = titles
-      self.restaurantTitle = restaurantTitle
+        
       super.init(nibName: nil, bundle: nil)
     }
 
@@ -69,42 +72,6 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-//
-//class MenuView: UIView {
-//    var tableView = UITableView()
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        createSubviews()
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        createSubviews()
-//    }
-//
-//    func createSubviews() {
-//        // all the layout code from above
-//        createTable()
-//
-//    }
-//    func createTable() {
-//
-//        self.addSubview(tableView)
-//
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
-//        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
-//        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = UITableView.automaticDimension
-//        self.backgroundColor = .white
-//    }
-//}
-//
 
 
 class MenuView: UIView {
