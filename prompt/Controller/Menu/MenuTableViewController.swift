@@ -39,6 +39,7 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         menuView.tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "contactCell")
         menuView.tableView.delegate = self
         menuView.tableView.dataSource = self
+
     }
     
 
@@ -133,6 +134,6 @@ class MenuView: UIView {
          self.backgroundColor = .white
         tableView.backgroundColor = .white
      }
-    
+
 }
 
