@@ -16,18 +16,20 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var offsetDenominator:CGFloat!
     var navAlpha = CGFloat()
-    var radioButtonIndexPath = [Int:IndexPath]() //for radiobutton
     
+    var radioButtonIndexPath = [Int:IndexPath]() //for radiobutton
+    var checkboxIndexPath = [IndexPath]() //for checkbox
+
     @IBOutlet weak var totalSelectionPriceLabel: UILabel!
     
     
-    var checkboxIndexPath = [IndexPath]() //for checkbox
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var ItemView: ItemView!
     let basePrice = CGFloat()
     var totalPrice: CGFloat?
     var sections = [ItemSection]()
     @IBOutlet weak var AddToCartButton: UIButton!
+    var order = [IndexPath]()
     
     let customView = Bundle.main.loadNibNamed("\(CustomTableHeaderView.self)", owner: nil, options: nil)!.first as! CustomTableHeaderView
     
@@ -40,7 +42,10 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         ["Flavour" :["required":false, "type": "single", "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]]]
     
 
-    
+    func didselectRadioButtonLogic(indexPath: IndexPath) {
+        radioButtonIndexPath[indexPath.section] = indexPath
+    }
+
 
     
     func didselectCheckBoxLogic(indexPath: IndexPath) {
@@ -58,7 +63,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-    
+
     func RadioButtonLogic(RadioCell: ItemTableViewCell, indexPath: IndexPath, itemName: String) -> ItemTableViewCell {
         let SelectedCircle = UIImage(named: "RadioNotEmpty")
         let DeSelectedCircle = UIImage(named: "RadioEmpty")
@@ -121,15 +126,20 @@ extension ItemViewController {
         if sections[indexPath.section].type == "many" {
             self.didselectCheckBoxLogic(indexPath: indexPath)
         } else if sections[indexPath.section].type == "single"  {
-            radioButtonIndexPath[indexPath.section] = indexPath
+            didselectRadioButtonLogic(indexPath: indexPath)
         }
         self.tableView.reloadData()
         self.configureAddToCartButton()
+        
+        updateOrderArray()
     }
-    
+        func updateOrderArray() {
+            self.order = checkboxIndexPath+Array(radioButtonIndexPath.values)
+            print(self.order)
+        }
 
     func configureAddToCartButton() {
-        if checkboxIndexPath.isEmpty || radioButtonIndexPath.isEmpty {
+        if checkboxIndexPath.isEmpty && radioButtonIndexPath.isEmpty {
             self.EnableAddtoCartButton(state: false)
             return
         }
@@ -151,8 +161,8 @@ extension ItemViewController {
                             return
                         }
                 }
-                self.EnableAddtoCartButton(state: true)
             }
         }
+        self.EnableAddtoCartButton(state: true)
     }
 }
