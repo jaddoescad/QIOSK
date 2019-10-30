@@ -29,8 +29,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     let newView = UIImageView()
     let customView = Bundle.main.loadNibNamed("\(CustomTableHeaderView.self)", owner: nil, options: nil)!.first as! CustomTableHeaderView
     
-    fileprivate var itemSections = [(ItemSection,Array<ItemSelection>)]()
-
     let Selections2 =
         
         [["Choice of Toppings": ["type": "many", "num_choices": 2, "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title": "Pepperoni"]]]],
@@ -43,7 +41,6 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         self.setupItemViewController()
         self.sections = ItemSections(data: Selections2)?.sections ?? []
-        print(self.sections[0].title)
     }
     
 
@@ -102,25 +99,18 @@ extension ItemViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let selectionArray = Selections2[indexPath.section].values
-    
-        //create section model
-        let selection = ItemSelection(index: indexPath.row, section: indexPath.section, price: 1.0, title: "title")
-        
         let RadioCell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell") as! ItemTableViewCell
         let BoxCell = tableView.dequeueReusableCell(withIdentifier: "ManyItemTableViewCell") as! ManyItemTableViewCell
         
-        switch selectionArray.map({ return $0["type"] }).first {
-        case let val where val as? String == "many":
-            return self.CheckBoxLogic(BoxCell: BoxCell, itemName: selection.title ?? "", indexPath: indexPath)
-        case let val where val as? String == "single":
-            return self.RadioButtonLogic(RadioCell: RadioCell, indexPath: indexPath, itemName: selection.title ?? "")
+        switch sections[indexPath.section].type {
+        case let val where val == "many":
+            return self.CheckBoxLogic(BoxCell: BoxCell, itemName: sections[indexPath.section].selections?[indexPath.row].title ?? "no title" , indexPath: indexPath)
+        case let val where val == "single":
+            return self.RadioButtonLogic(RadioCell: RadioCell, indexPath: indexPath, itemName: sections[indexPath.section].selections?[indexPath.row].title ?? "no title")
         default:
             print("Invalid choose")
             return BoxCell
         }
-    
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.Selections2.count
@@ -130,15 +120,11 @@ extension ItemViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectionArray = Selections2[indexPath.section].values
-
-        if selectionArray.map({ return $0["type"] }).first as? String == "many" {
+        if sections[indexPath.section].type == "many" {
             self.didselectCheckBoxLogic(indexPath: indexPath)
-        } else if selectionArray.map({ return $0["type"] }).first as? String == "single"  {
+        } else if sections[indexPath.section].type == "single"  {
             radioButtonIndexPath[indexPath.section] = indexPath
         }
         self.tableView.reloadData()
-        
-        // reload your tableview here
     }
 }
