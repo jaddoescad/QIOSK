@@ -12,6 +12,12 @@ import UIKit
 
 
 extension ItemViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupItemViewController()
+        self.sections = ItemSections(data: Selections2)?.sections ?? []
+        self.EnableAddtoCartButton(state: false)
+    }
     func addHeaderView () {
         // 1. Set table header view programmatically
         self.tableView.setTableHeaderView(headerView: customView)
@@ -68,5 +74,17 @@ extension ItemViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func EnableAddtoCartButton(state: Bool) {
+        if state == true {
+            self.AddToCartButton.isUserInteractionEnabled = state
+            self.AddToCartButton.titleLabel?.alpha = 1
+            totalSelectionPriceLabel.alpha = 1
+        } else {
+            self.AddToCartButton.isUserInteractionEnabled = state
+            self.AddToCartButton.titleLabel?.alpha = 0.5
+            totalSelectionPriceLabel.alpha = 0.5
+        }
+
+    }
 }
 

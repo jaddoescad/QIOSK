@@ -13,35 +13,33 @@ import SwiftyJSON
 
 class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
-    @IBOutlet weak var AddToCartButton: UIButton!
     
     var offsetDenominator:CGFloat!
     var navAlpha = CGFloat()
     var radioButtonIndexPath = [Int:IndexPath]() //for radiobutton
+    
+    @IBOutlet weak var totalSelectionPriceLabel: UILabel!
+    
+    
     var checkboxIndexPath = [IndexPath]() //for checkbox
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var ItemView: ItemView!
     let basePrice = CGFloat()
     var totalPrice: CGFloat?
     var sections = [ItemSection]()
+    @IBOutlet weak var AddToCartButton: UIButton!
     
-    @IBOutlet weak var ItemCartButton: UIButton!
-    let newView = UIImageView()
     let customView = Bundle.main.loadNibNamed("\(CustomTableHeaderView.self)", owner: nil, options: nil)!.first as! CustomTableHeaderView
     
     let Selections2 =
         
-        [["Choice of Toppings": ["type": "many", "num_choices": 2, "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title": "Pepperoni"]]]],
+        [["Choice of Toppings": ["required":true, "type": "many", "num_choices": 2, "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title": "Pepperoni"]]]],
         
-         ["Flavour" :["type": "single","selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]],
+         ["Flavour" :["required":true, "type": "single","selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]],
         
-        ["Flavour" :["type": "single", "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]]]
+        ["Flavour" :["required":false, "type": "single", "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]]]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupItemViewController()
-        self.sections = ItemSections(data: Selections2)?.sections ?? []
-    }
+
     
 
     
@@ -126,5 +124,35 @@ extension ItemViewController {
             radioButtonIndexPath[indexPath.section] = indexPath
         }
         self.tableView.reloadData()
+        self.configureAddToCartButton()
+    }
+    
+
+    func configureAddToCartButton() {
+        if checkboxIndexPath.isEmpty || radioButtonIndexPath.isEmpty {
+            self.EnableAddtoCartButton(state: false)
+            return
+        }
+        for i in 0..<sections.count {
+            if sections[i].required == true {
+                //check type
+                if sections[i].type == "many" {
+                    for i in 0..<checkboxIndexPath.count {
+                        if !(checkboxIndexPath[i].section == sections[i].sectionIndex) {
+                            self.EnableAddtoCartButton(state: false)
+                            return
+                        }
+                    }
+                    }
+                } else if sections[i].type == "single" {
+                    for i in 0..<radioButtonIndexPath.count {
+                        if !(radioButtonIndexPath.keys.contains(sections[i].sectionIndex)) {
+                            self.EnableAddtoCartButton(state: false)
+                            return
+                        }
+                }
+                self.EnableAddtoCartButton(state: true)
+            }
+        }
     }
 }

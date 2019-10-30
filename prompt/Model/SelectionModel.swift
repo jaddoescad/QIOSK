@@ -69,14 +69,14 @@ class ItemSections {
 
 
 class ItemSection {
-  let sectionIndex: Int?
+  let sectionIndex: Int
   let title: String?
   let type: String?
   let max: Int?
   let required: Bool?
   let selections: [ItemSelection]?
 
-    init(title: String?, type: String?, max: Int?, required: Bool?, sectionIndex: Int?, selections: [ItemSelection]?) {
+    init(title: String?, type: String?, max: Int?, required: Bool?, sectionIndex: Int, selections: [ItemSelection]?) {
         self.title = title
         self.type = type
         self.max = max
@@ -85,7 +85,6 @@ class ItemSection {
         self.selections = selections
     }
 }
-
 
 
 

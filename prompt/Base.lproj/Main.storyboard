@@ -199,6 +199,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7u8-Ko-uBr">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="0q3-vx-HaH"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oe7-XS-i2f">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.21176470589999999" green="0.36862745099999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -222,12 +229,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7u8-Ko-uBr" firstAttribute="trailing" secondItem="vtS-OD-NBb" secondAttribute="trailing" id="0aV-IA-SP5"/>
                             <constraint firstItem="vtS-OD-NBb" firstAttribute="trailing" secondItem="WMP-ki-3ok" secondAttribute="trailing" id="2Wi-gt-uau"/>
                             <constraint firstItem="vtS-OD-NBb" firstAttribute="trailing" secondItem="Oe7-XS-i2f" secondAttribute="trailing" id="2qI-m9-hU8"/>
                             <constraint firstItem="Oe7-XS-i2f" firstAttribute="leading" secondItem="vtS-OD-NBb" secondAttribute="leading" id="4o5-im-U4R"/>
                             <constraint firstItem="vtS-OD-NBb" firstAttribute="bottom" secondItem="Oe7-XS-i2f" secondAttribute="bottom" id="Gr6-lB-QZs"/>
                             <constraint firstItem="ybV-rz-tfK" firstAttribute="centerY" secondItem="Oe7-XS-i2f" secondAttribute="centerY" id="KeB-Kf-sWI"/>
                             <constraint firstItem="WMP-ki-3ok" firstAttribute="top" secondItem="3WE-a9-CU8" secondAttribute="topMargin" constant="-40" id="TY6-19-MR4"/>
+                            <constraint firstItem="7u8-Ko-uBr" firstAttribute="bottom" secondItem="vtS-OD-NBb" secondAttribute="bottom" id="XTa-h8-lf6"/>
+                            <constraint firstItem="7u8-Ko-uBr" firstAttribute="leading" secondItem="vtS-OD-NBb" secondAttribute="leading" id="eGw-gi-TpX"/>
                             <constraint firstItem="vtS-OD-NBb" firstAttribute="trailing" secondItem="ybV-rz-tfK" secondAttribute="trailing" constant="15" id="mNW-WE-ESn"/>
                             <constraint firstItem="vtS-OD-NBb" firstAttribute="bottom" secondItem="WMP-ki-3ok" secondAttribute="bottom" id="ojQ-qe-dTr"/>
                             <constraint firstItem="WMP-ki-3ok" firstAttribute="leading" secondItem="vtS-OD-NBb" secondAttribute="leading" id="reL-iB-AUd"/>
@@ -237,10 +247,10 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="CYJ-7N-tZa"/>
                     <connections>
-                        <outlet property="AddToCartButton" destination="Oe7-XS-i2f" id="GTD-jh-bba"/>
-                        <outlet property="ItemCartButton" destination="Oe7-XS-i2f" id="4GW-EW-Qox"/>
+                        <outlet property="AddToCartButton" destination="Oe7-XS-i2f" id="Y26-K4-lVe"/>
                         <outlet property="ItemView" destination="3WE-a9-CU8" id="YIM-bx-ogn"/>
                         <outlet property="tableView" destination="WMP-ki-3ok" id="iZv-hp-Ryq"/>
+                        <outlet property="totalSelectionPriceLabel" destination="ybV-rz-tfK" id="vcv-Ts-Pf6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="km6-zN-jt3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

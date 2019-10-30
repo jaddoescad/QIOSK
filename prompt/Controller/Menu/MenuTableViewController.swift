@@ -67,7 +67,6 @@ class MenuTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("hell")
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ItemViewController")
         self.navigationController?.pushViewController(vc, animated: true)
     }

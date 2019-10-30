@@ -23,30 +23,3 @@ class MenuItem: PagingItem {
         self.images = images
     } 
 }
-
-
-
-//struct Menu {
-//    var MenuSection: String?
-//    var FoodItems: [FoodItem]
-//}
-//
-//struct FoodItem {
-//    let ItemTitle: String?
-//    let ItemDescription: Float?
-//    let ItemPrice: Float?
-//    let ItemSections: [SelectionSection]
-//}
-//
-//struct SelectionSection {
-//    let SectionTitle: String?
-//    let SectionCondition: String?
-//    let SectionMax: Float?
-//    let Required: Bool?
-//    let Selections: [Selection]
-//}
-//
-//struct Selection {
-//    let SelectionTitle: String?
-//    let SelectionPrice: Float?
-//}
