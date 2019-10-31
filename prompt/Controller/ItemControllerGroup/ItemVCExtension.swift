@@ -17,6 +17,7 @@ extension ItemViewController {
         self.setupItemViewController()
         self.sections = ItemSections(data: Selections2)?.sections ?? []
         self.EnableAddtoCartButton(state: false)
+        self.totalSelectionPriceLabel.text = "$\(self.basePrice.fratcionDigitis(2))" 
     }
     func addHeaderView () {
         // 1. Set table header view programmatically

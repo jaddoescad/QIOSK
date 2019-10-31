@@ -56,3 +56,15 @@ extension UIColor {
         }
     }
 }
+
+extension BinaryFloatingPoint {
+    func fratcionDigitis(_ n: Int, roundingMode: NumberFormatter.RoundingMode = .halfEven) -> String {
+        Formatter.number.roundingMode = roundingMode
+        Formatter.number.maximumFractionDigits = n
+        Formatter.number.minimumFractionDigits = n
+        return Formatter.number.string(for: self) ?? ""
+    }
+}
+extension Formatter {
+    static let number = NumberFormatter()
+}

@@ -16,17 +16,17 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var offsetDenominator:CGFloat!
     var navAlpha = CGFloat()
-    
     var radioButtonIndexPath = [Int:IndexPath]() //for radiobutton
     var checkboxIndexPath = [IndexPath]() //for checkbox
-
+    var basePrice: Float = 10.78
+    var totalPrice: Float = 0.0
+    var number_of_Items: Int = 1
+    
     @IBOutlet weak var totalSelectionPriceLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var ItemView: ItemView!
-    let basePrice = CGFloat()
-    var totalPrice: CGFloat?
     var sections = [ItemSection]()
     @IBOutlet weak var AddToCartButton: UIButton!
     var order = [IndexPath]()
@@ -109,6 +109,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.cellPrice.isHidden = true
         } else {
             cell.cellPrice.text = "+$\(cellPrice)"
+            cell.cellPrice.isHidden = false
         }
     }
 }
@@ -153,15 +154,26 @@ extension ItemViewController {
         } else if sections[indexPath.section].type == "single"  {
             didselectRadioButtonLogic(indexPath: indexPath)
                 self.tableView.reloadSections([indexPath.section], with: .none)
-            
         }
         self.updateOrderArray()
         self.configureAddToCartButton()
     }
+    
         func updateOrderArray() {
             self.order = checkboxIndexPath+Array(radioButtonIndexPath.values)
-            print(self.order)
+            self.updateTotalPrice()
         }
+    
+    func updateTotalPrice() {
+        var price_array = [Float]()
+        for i in 0..<self.order.count {
+            if let price = sections[order[i].section].selections?[order[i].row].price {
+                price_array.append(price)
+            }
+        }
+        self.totalPrice = (basePrice + price_array.reduce(0, +)) * Float(number_of_Items)
+        self.totalSelectionPriceLabel.text = "$\(self.totalPrice.fratcionDigitis(2))"
+    }
 
     func configureAddToCartButton() {
         if checkboxIndexPath.isEmpty && radioButtonIndexPath.isEmpty {

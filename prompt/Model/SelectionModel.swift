@@ -11,10 +11,13 @@ import UIKit
 
 class ItemSections {
     let sections: [ItemSection]?
+
     
     init?(data: Any) {
         self.sections = ItemSections.setupSection(data: data)
     }
+    
+
     
     class func setupSection(data: Any) -> [ItemSection]? {
         var itemSections = [ItemSection]()
