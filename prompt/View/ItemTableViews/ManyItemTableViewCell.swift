@@ -17,7 +17,9 @@ class ManyItemTableViewCell: UITableViewCell {
     
     
     
-    
+    override func prepareForReuse() -> Void {
+       cellPrice.text = nil
+    }
     
     func initCellItem() {
 

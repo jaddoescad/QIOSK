@@ -100,6 +100,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.cellPrice.isHidden = true
         } else {
             cell.cellPrice.text = "+$\(cellPrice)"
+            cell.cellPrice.isHidden = false
         }
     }
     
@@ -126,7 +127,6 @@ extension ItemViewController {
         let section = sections[indexPath.section]
         let cell = section.selections?[indexPath.row]
         
-        print(cell?.price)
         
         switch section.type {
         case let val where val == "many":
@@ -148,13 +148,15 @@ extension ItemViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if sections[indexPath.section].type == "many" {
             self.didselectCheckBoxLogic(indexPath: indexPath)
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+            
         } else if sections[indexPath.section].type == "single"  {
             didselectRadioButtonLogic(indexPath: indexPath)
+                self.tableView.reloadSections([indexPath.section], with: .none)
+            
         }
-        self.tableView.reloadData()
-        updateOrderArray()
+        self.updateOrderArray()
         self.configureAddToCartButton()
-        
     }
         func updateOrderArray() {
             self.order = checkboxIndexPath+Array(radioButtonIndexPath.values)
