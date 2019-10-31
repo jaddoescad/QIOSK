@@ -129,9 +129,9 @@ extension ItemViewController {
             didselectRadioButtonLogic(indexPath: indexPath)
         }
         self.tableView.reloadData()
+        updateOrderArray()
         self.configureAddToCartButton()
         
-        updateOrderArray()
     }
         func updateOrderArray() {
             self.order = checkboxIndexPath+Array(radioButtonIndexPath.values)
@@ -145,24 +145,16 @@ extension ItemViewController {
         }
         for i in 0..<sections.count {
             if sections[i].required == true {
+                print("hello")
                 //check type
-                if sections[i].type == "many" {
-                    for i in 0..<checkboxIndexPath.count {
-                        if !(checkboxIndexPath[i].section == sections[i].sectionIndex) {
-                            self.EnableAddtoCartButton(state: false)
-                            return
-                        }
-                    }
-                    }
-                } else if sections[i].type == "single" {
-                    for i in 0..<radioButtonIndexPath.count {
-                        if !(radioButtonIndexPath.keys.contains(sections[i].sectionIndex)) {
-                            self.EnableAddtoCartButton(state: false)
-                            return
-                        }
+                if !order.contains(where: { $0[0] == sections[i].sectionIndex }) {
+                    self.EnableAddtoCartButton(state: false)
+                    return
                 }
-            }
+                    
         }
         self.EnableAddtoCartButton(state: true)
     }
+}
+
 }
