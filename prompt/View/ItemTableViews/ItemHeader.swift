@@ -32,7 +32,6 @@ class ItemTableHeaderView: UIView {
             sectionConditionLabel.font = UIFont(name: "AvenirNext-Medium", size: 13)
 
     //           newlabel.adjustsFontSizeToFitWidth = true
-            sectionConditionLabel.text = "Required"
     
             self.addSubview(sectionHeaderLabel)
             self.addSubview(sectionConditionLabel)

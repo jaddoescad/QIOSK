@@ -12,8 +12,6 @@ import SwiftyJSON
 
 
 class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
-    
-    
     var offsetDenominator:CGFloat!
     var navAlpha = CGFloat()
     var radioButtonIndexPath = [Int:IndexPath]() //for radiobutton
@@ -35,7 +33,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let Selections2 =
         
-        [["Choice of Toppings": ["required":true, "type": "many", "num_choices": 2, "selection": ["1": ["title": "Margarita", "price": 3.75], "2": ["title" : "BBQ Chicken", "price": 2.76], "3":["title": "Pepperoni"]]]],
+        [["Choice of Toppings": ["required":true, "type": "many", "max_choices": 2, "selection": ["1": ["title": "Margarita", "price": 3.75], "2": ["title" : "BBQ Chicken", "price": 2.76], "3":["title": "Pepperoni"]]]],
         
          ["Flavour" :["required":true, "type": "single","selection": ["1": ["title": "Margarita", "price": 1.76], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni", "price": 2.56]]]],
         
@@ -55,7 +53,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
                 checkboxIndexPath.remove(at:checkboxIndex )
             }
         }else{
-            if let section_max = Array(Selections2[indexPath.section].values)[0]["num_choices"] as? Int {
+            if let section_max = Array(Selections2[indexPath.section].values)[0]["max_choices"] as? Int {
                 if !(count >= section_max) {
                     checkboxIndexPath.append(indexPath)
                 }
@@ -118,6 +116,25 @@ extension ItemViewController {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let tableHeader = ItemTableHeaderView()
         tableHeader.sectionHeaderLabel.text = Array(self.Selections2[section].keys)[0]
+        
+        let section = sections[section]
+
+        var required = "Optional"
+        var max_pick = section.max ?? 0
+        
+        
+        if let required_condition = section.required {
+            if required_condition == true {
+                required = "Required"
+            }
+        }
+        
+        if max_pick > 0 {
+            tableHeader.sectionConditionLabel.text = required+" - Pick up to \(max_pick)"
+        } else {
+            tableHeader.sectionConditionLabel.text = required
+        }
+
         return tableHeader
     }
     

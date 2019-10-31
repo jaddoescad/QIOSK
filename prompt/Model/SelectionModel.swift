@@ -37,7 +37,7 @@ class ItemSections {
         let title = Array(itemSection.keys)[0]
         let values = Array(itemSection.values)[0] as? [String: Any]
         let type = values?["type"] as? String ?? "many"
-        let max = values?["max"] as? Int
+        let max = values?["max_choices"] as? Int
         let required = values?["required"] as? Bool ?? false
         let setionIndex = setionIndex
         let selectionArray = values?["selection"] as? [String: Any] ?? [:]
