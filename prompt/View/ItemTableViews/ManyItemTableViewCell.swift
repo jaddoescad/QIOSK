@@ -8,9 +8,17 @@ class ManyItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var radioButton: UIButton!
     
-    @IBOutlet weak var itemLabel: UILabel!
-    var Selected = false
+    @IBOutlet weak var cellPrice: UILabel!
 
+    
+    @IBOutlet weak var itemLabel: UILabel!
+
+    
+    
+    
+    
+    
+    
     func initCellItem() {
 
         let deselectedImage = UIImage(named: "Deselect")

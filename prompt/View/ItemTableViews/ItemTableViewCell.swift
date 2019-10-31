@@ -5,7 +5,8 @@ import Parchment
 class ItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var radioButton: UIButton!
-    
+    @IBOutlet weak var cellPrice: UILabel!
+
     @IBOutlet weak var itemLabel: UILabel!
     var Selected = false
 

@@ -22,7 +22,6 @@ class ItemSections {
         guard let selectionList = data as? [[String : [String : Any]]] else {
             return nil
         }
-//        var section = ItemSection(title: "hi", type: "e", max: 0, required: false, index: 0, selections: <#T##[ItemSelection]#>)
         
         //loop thru section
         for i in 0..<selectionList.count {
@@ -56,9 +55,10 @@ class ItemSections {
         for i in 0..<sortedSelectionArray.count {
         let selection = (sortedSelectionArray[i].value as? [String:Any])
         let title = selection?["title"] as? String
-        let price = selection?["price"] as? Float
+        let price = selection?["price"]
             
-        let itemSelection_ = ItemSelection(index: i, section: sectionIndex, price: price ?? 0.0, title: title ?? "Item")
+            
+            let itemSelection_ = ItemSelection(index: i, section: sectionIndex, price: Float(truncating: price as? NSNumber ?? 0.0) , title: title ?? "Item")
         ItemSelections.append(itemSelection_)
         }
         

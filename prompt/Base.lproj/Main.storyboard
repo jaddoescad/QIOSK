@@ -148,6 +148,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="cellPrice" destination="4yJ-rM-uwf" id="yR1-WS-xbH"/>
                                             <outlet property="itemLabel" destination="AcC-wx-OsH" id="flZ-Gk-kdY"/>
                                             <outlet property="radioButton" destination="Wpr-ZF-CVW" id="9vp-rc-w3u"/>
                                         </connections>
@@ -193,6 +194,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="cellPrice" destination="2Uy-JC-ldF" id="ilX-ru-Fij"/>
                                             <outlet property="itemLabel" destination="6qU-Jg-8W6" id="9ti-7B-fCY"/>
                                             <outlet property="radioButton" destination="i3o-wD-lmO" id="kFN-le-FaO"/>
                                         </connections>

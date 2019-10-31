@@ -35,11 +35,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let Selections2 =
         
-        [["Choice of Toppings": ["required":true, "type": "many", "num_choices": 2, "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title": "Pepperoni"]]]],
+        [["Choice of Toppings": ["required":true, "type": "many", "num_choices": 2, "selection": ["1": ["title": "Margarita", "price": 3.75], "2": ["title" : "BBQ Chicken", "price": 2.76], "3":["title": "Pepperoni"]]]],
         
-         ["Flavour" :["required":true, "type": "single","selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]],
+         ["Flavour" :["required":true, "type": "single","selection": ["1": ["title": "Margarita", "price": 1.76], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni", "price": 2.56]]]],
         
-        ["Flavour" :["required":false, "type": "single", "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni"]]]]]
+         ["Flavour" :["required":true, "type": "single", "selection": ["1": ["title": "Margarita"], "2": ["title" : "BBQ Chicken"], "3":["title":"Pepperoni", "price" : 3.24]]]]]
     
 
     func didselectRadioButtonLogic(indexPath: IndexPath) {
@@ -64,11 +64,13 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
-    func RadioButtonLogic(RadioCell: ItemTableViewCell, indexPath: IndexPath, itemName: String) -> ItemTableViewCell {
+    func RadioButtonLogic(RadioCell: ItemTableViewCell, indexPath: IndexPath, itemName: String, price: Float) -> ItemTableViewCell {
         let SelectedCircle = UIImage(named: "RadioNotEmpty")
         let DeSelectedCircle = UIImage(named: "RadioEmpty")
         
         RadioCell.itemLabel.text = itemName
+        updateRadioCellPrice(cell: RadioCell, cellPrice: price)
+        
         if radioButtonIndexPath.keys.contains(indexPath.section) {
             if radioButtonIndexPath[indexPath.section] == indexPath {
                 RadioCell.radioButton.setImage(SelectedCircle, for: .normal)
@@ -80,10 +82,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return RadioCell
     }
-    func CheckBoxLogic(BoxCell: ManyItemTableViewCell, itemName: String, indexPath: IndexPath) -> ManyItemTableViewCell {
+    func CheckBoxLogic(BoxCell: ManyItemTableViewCell, itemName: String, indexPath: IndexPath, cellPrice: Float) -> ManyItemTableViewCell {
         let selectedSquare = UIImage(named: "Select")
         let DeSelectedSquare = UIImage(named: "Deselect")
         BoxCell.itemLabel.text = itemName
+        updateBoxCellPrice(cell: BoxCell, cellPrice: cellPrice)
         if checkboxIndexPath.contains(indexPath) {
             BoxCell.radioButton.setImage(selectedSquare, for: .normal)
         }else{
@@ -91,7 +94,22 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return BoxCell
     }
-
+    
+    func updateBoxCellPrice(cell: ManyItemTableViewCell, cellPrice: Float) {
+        if cellPrice.isZero {
+            cell.cellPrice.isHidden = true
+        } else {
+            cell.cellPrice.text = "+$\(cellPrice)"
+        }
+    }
+    
+    func updateRadioCellPrice(cell: ItemTableViewCell, cellPrice: Float) {
+        if cellPrice.isZero {
+            cell.cellPrice.isHidden = true
+        } else {
+            cell.cellPrice.text = "+$\(cellPrice)"
+        }
+    }
 }
 
 extension ItemViewController {
@@ -105,11 +123,16 @@ extension ItemViewController {
         let RadioCell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell") as! ItemTableViewCell
         let BoxCell = tableView.dequeueReusableCell(withIdentifier: "ManyItemTableViewCell") as! ManyItemTableViewCell
         
-        switch sections[indexPath.section].type {
+        let section = sections[indexPath.section]
+        let cell = section.selections?[indexPath.row]
+        
+        print(cell?.price)
+        
+        switch section.type {
         case let val where val == "many":
-            return self.CheckBoxLogic(BoxCell: BoxCell, itemName: sections[indexPath.section].selections?[indexPath.row].title ?? "no title" , indexPath: indexPath)
+            return self.CheckBoxLogic(BoxCell: BoxCell, itemName: cell?.title ?? "no title" , indexPath: indexPath, cellPrice: cell?.price ?? 0.0)
         case let val where val == "single":
-            return self.RadioButtonLogic(RadioCell: RadioCell, indexPath: indexPath, itemName: sections[indexPath.section].selections?[indexPath.row].title ?? "no title")
+            return self.RadioButtonLogic(RadioCell: RadioCell, indexPath: indexPath, itemName: cell?.title ?? "no title", price: cell?.price ?? 0.0)
         default:
             print("Invalid choose")
             return BoxCell
