@@ -1,7 +1,7 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/MXParallaxHeader" "${PODS_CONFIGURATION_BUILD_DIR}/Parchment" "${PODS_CONFIGURATION_BUILD_DIR}/QRCodeReader.swift" "${PODS_CONFIGURATION_BUILD_DIR}/SelectionList" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GMStepper" "${PODS_CONFIGURATION_BUILD_DIR}/MXParallaxHeader" "${PODS_CONFIGURATION_BUILD_DIR}/Parchment" "${PODS_CONFIGURATION_BUILD_DIR}/QRCodeReader.swift" "${PODS_CONFIGURATION_BUILD_DIR}/SelectionList" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/MXParallaxHeader/MXParallaxHeader.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Parchment/Parchment.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/QRCodeReader.swift/QRCodeReader.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SelectionList/SelectionList.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "MXParallaxHeader" -framework "Parchment" -framework "QRCodeReader" -framework "SelectionList" -framework "SwiftyJSON"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GMStepper/GMStepper.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/MXParallaxHeader/MXParallaxHeader.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Parchment/Parchment.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/QRCodeReader.swift/QRCodeReader.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SelectionList/SelectionList.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AVFoundation" -framework "GMStepper" -framework "MXParallaxHeader" -framework "Parchment" -framework "QRCodeReader" -framework "SelectionList" -framework "SwiftyJSON"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

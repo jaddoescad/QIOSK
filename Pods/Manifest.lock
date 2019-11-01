@@ -1,4 +1,5 @@
 PODS:
+  - GMStepper (2.2)
   - MXParallaxHeader (1.0.0)
   - Parchment (1.7.0)
   - QRCodeReader.swift (10.1.0)
@@ -6,6 +7,7 @@ PODS:
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
+  - GMStepper
   - MXParallaxHeader
   - Parchment
   - QRCodeReader.swift (~> 10.1.0)
@@ -14,6 +16,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - GMStepper
     - MXParallaxHeader
     - Parchment
     - QRCodeReader.swift
@@ -21,12 +24,13 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  GMStepper: 89fb106944dfcc3aa3add7164e3ebd463ea2104b
   MXParallaxHeader: a95e0af1f485b1b718a6939f583f0dbae6992c41
   Parchment: cae686f73685d16742cec9c19239b7578a15f0f5
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
   SelectionList: 668c293ec698f1d0e514414c9feec8312023ff5d
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 9ab77d79fa849e16cb62b7770c95829d69f499b5
+PODFILE CHECKSUM: d8bcd3222dfd224d21a3d7c60030b74cbc63486c
 
 COCOAPODS: 1.8.3

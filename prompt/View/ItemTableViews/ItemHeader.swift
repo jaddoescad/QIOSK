@@ -48,3 +48,13 @@ class ItemTableHeaderView: UIView {
     }
     
 }
+
+
+class ItemFooter: UIView {
+    let customView = UIView()
+
+
+    func addSectionFooterView() {
+        
+    }
+}

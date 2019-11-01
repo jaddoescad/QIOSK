@@ -9,6 +9,7 @@
 import UIKit
 import MXParallaxHeader
 import SwiftyJSON
+import GMStepper
 
 
 class ItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
@@ -29,7 +30,11 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var AddToCartButton: UIButton!
     var order = [IndexPath]()
     
-    let customView = Bundle.main.loadNibNamed("\(CustomTableHeaderView.self)", owner: nil, options: nil)!.first as! CustomTableHeaderView
+    let customHeaderView = Bundle.main.loadNibNamed("\(CustomTableHeaderView.self)", owner: nil, options: nil)!.first as! CustomTableHeaderView
+    
+    let customFooterView = Bundle.main.loadNibNamed("\(CustomTableFooterView.self)", owner: nil, options: nil)!.first as! CustomTableFooterView
+
+    
     
     let Selections2 =
         
@@ -44,6 +49,10 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
         radioButtonIndexPath[indexPath.section] = indexPath
     }
 
+    @objc func stepperValueChanged(stepper: GMStepper) {
+        self.number_of_Items = Int(stepper.value)
+        self.updateTotalPrice()
+    }
 
     
     func didselectCheckBoxLogic(indexPath: IndexPath) {
@@ -120,15 +129,13 @@ extension ItemViewController {
         let section = sections[section]
 
         var required = "Optional"
-        var max_pick = section.max ?? 0
-        
+        let max_pick = section.max ?? 0
         
         if let required_condition = section.required {
             if required_condition == true {
                 required = "Required"
             }
         }
-        
         if max_pick > 0 {
             tableHeader.sectionConditionLabel.text = required+" - Pick up to \(max_pick)"
         } else {

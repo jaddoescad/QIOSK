@@ -9,6 +9,8 @@ target 'prompt' do
   pod 'MXParallaxHeader'
   pod 'SelectionList'
   pod 'SwiftyJSON', '~> 4.0'
+  pod "GMStepper"
+
   # Pods for prompt
   target 'promptTests' do
     inherit! :search_paths

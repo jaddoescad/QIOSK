@@ -18,6 +18,7 @@
 		AF364C772369218200FE204D /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C762369218200FE204D /* MenuModel.swift */; };
 		AF364C792369461400FE204D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C782369461400FE204D /* MenuView.swift */; };
 		AF364C7B2369D65000FE204D /* SelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF364C7A2369D65000FE204D /* SelectionModel.swift */; };
+		AF364C7D236BB7FF00FE204D /* CustomTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF364C7C236B90ED00FE204D /* CustomTableFooterView.xib */; };
 		AF5BFD022358DBC700B6897E /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFCFD2358DBC700B6897E /* UIView+constraints.swift */; };
 		AF5BFD042358DBC700B6897E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFCFF2358DBC700B6897E /* MenuViewController.swift */; };
 		AF5BFD0A2358F07A00B6897E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5BFD092358F07A00B6897E /* MenuTableViewController.swift */; };
@@ -86,6 +87,7 @@
 		AF364C762369218200FE204D /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		AF364C782369461400FE204D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		AF364C7A2369D65000FE204D /* SelectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionModel.swift; sourceTree = "<group>"; };
+		AF364C7C236B90ED00FE204D /* CustomTableFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableFooterView.xib; sourceTree = "<group>"; };
 		AF5BFCFD2358DBC700B6897E /* UIView+constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
 		AF5BFCFF2358DBC700B6897E /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		AF5BFD092358F07A00B6897E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				AF364C6B2367792900FE204D /* ItemTableViews */,
 				AF7F6E1723608AD400950AF6 /* MenuTableView.swift */,
 				AF7F6E1D2360E03400950AF6 /* CustomTableHeaderView.xib */,
+				AF364C7C236B90ED00FE204D /* CustomTableFooterView.xib */,
 				AF358017236531E3002D7C62 /* HeaderView.swift */,
 				AF364C782369461400FE204D /* MenuView.swift */,
 			);
@@ -404,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF364C7D236BB7FF00FE204D /* CustomTableFooterView.xib in Resources */,
 				AFE569CE235768410001EA76 /* LaunchScreen.storyboard in Resources */,
 				AF7F6E1E2360E03400950AF6 /* CustomTableHeaderView.xib in Resources */,
 				AFE569CB235768410001EA76 /* Assets.xcassets in Resources */,

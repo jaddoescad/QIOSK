@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import GMStepper
 
 class CustomTableHeaderView: UIView {
 
+}
+
+class CustomTableFooterView: UIView {
+
+    @IBOutlet weak var ItemStepper: GMStepper!
 }
 
 class ItemView: UIView {

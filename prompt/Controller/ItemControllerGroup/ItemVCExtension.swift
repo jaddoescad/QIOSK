@@ -21,8 +21,12 @@ extension ItemViewController {
     }
     func addHeaderView () {
         // 1. Set table header view programmatically
-        self.tableView.setTableHeaderView(headerView: customView)
-        self.offsetDenominator = self.customView.frame.size.height - (self.ItemView.NavView.frame.height)
+        self.tableView.setTableHeaderView(headerView: customHeaderView)
+        self.tableView.tableFooterView = customFooterView as! UIView
+        //set table footer programmatically
+        self.offsetDenominator = self.customHeaderView.frame.size.height - (self.ItemView.NavView.frame.height)
+        customFooterView.ItemStepper.addTarget(self, action: #selector(stepperValueChanged), for: .valueChanged)
+
 
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
